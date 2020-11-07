@@ -1,15 +1,17 @@
-const searchBtn = document.getElementById("citySearchBtn");
-const cityInput = document.getElementById("cityInput");
+const searchBtn = $("#citySearchBtn");
+const cityInput = $("#cityInput");
 
 $("form").on("submit", function(e){
   e.preventDefault()
     //create a list item to append
-    let input= $("#cityInput").val();
+    let input= cityInput.val();
     let item = $("<li>")
+    item.attr("style", "border: solid; border-width: thin;")
+
     item.text(input)
     $("#citySrchHistory").prepend(item)
     //function to return old info
-    // $("#citySrchHistory").on("click", getCurrentWeather())
+    $("#citySrchHistory").on("click", getCurrentWeather(input))
 
     getCurrentWeather(input);
     
@@ -24,8 +26,8 @@ function getCurrentWeather(city){
         let currentDay = moment(data.dt_txt).format("L");
           $("#info").text(data.name + " " + currentDay)
           $("#icon1").attr("src", "https://openweathermap.org/img/w/" + iconImg + ".png")
-          $("#temperature").text("Temp: " +data.main.temp + "F")
-          $("#feelsLike").text("Feels Like: " + data.main.feels_like + "F")
+          $("#temperature").text("Temp: " +data.main.temp + " F")
+          $("#feelsLike").text("Feels Like: " + data.main.feels_like + " F")
           $("#humidity").text("Humidity: " + data.main.humidity + "%")
           $("#windSpeed").text("Wind Speed: " + data.wind.speed + "Mph")
           // call other functions
@@ -65,7 +67,7 @@ function getForecast(city){
   }
 
   let dataCard = function (data){
-    //created information tags for the card
+    //created tags for the information in the card
     let iconImg = data.weather[0].icon;
     let card = $("<div>");
     let head = $("<h4>");
@@ -74,21 +76,23 @@ function getForecast(city){
     let temp = $("<p>");
     let humidity = $("<p>");
     // added classes to those tags with some styles
-    card.attr("style", "width: 160px; margin-right 10px; border: solid; padding: 10px;")
+    card.attr("style", "width: 160px; margin: 10px; border: solid; background-color: blue; border-radius: 10px;")
     icon.attr("src", "https://openweathermap.org/img/w/" + iconImg + ".png")
+    body.attr("style", "color: white;")
     body.addClass("daily-forcast");
     head.addClass("days");
     // added text to those tags
     head.text(moment(data.dt_txt).format("L"));
     temp.text("Temp: " + data.main.temp + " F");
     humidity.text("Humidity: " + data.main.humidity + "%");
+    
     // appended all the tags so they can build the card 
-  body.append(head);
-  body.append(icon);
-  body.append(temp);
-  body.append(humidity);
-  card.append(body);
-  $("#dataRow").append(card);
+    body.append(head);
+    body.append(icon);
+    body.append(temp);
+    body.append(humidity);
+    card.append(body);
+    $("#dataRow").append(card);
 }
   
 
