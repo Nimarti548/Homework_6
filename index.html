@@ -23,31 +23,40 @@
             <!-- City Search Bar -->
             <div class="col-3 searchCol">
                 <!-- Search Form with Button -->
-                <h4>Search for a city:</h4>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="cityInput" placeholder="City">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="submit" id="citySearchBtn">
-                            <span class="fas fa-search"></span>
-                        </button>
+                <form>
+                    <h4>Search for a city:</h4>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="cityInput" placeholder="City">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="submit" id="citySearchBtn">
+                                <span class="fas fa-search"></span>
+                            </button>
                         </div>
                     </div>
-                    <!-- City Table List -->
-                    <div class="list-group" id="cityList"></div>                    
+                </form>
+                <!-- City Table List -->
+                <div class="list-group" id="cityList">
+                    <ul id="citySrchHistory"></ul>
+                </div>                    
+            </div>
+            <!-- Weather Information Column -->
+            <div class="col-9" style = "border: solid; padding: 5px; border-color: Black;">
+                <div class="card" style="width: 100%;" id="weatherInfoContainer"></div>
+                <div id="forecastContainer">
+                    <h5 class="cardTitle" id="info"></h5>
+                    <img class="cardInfo" id="icon1">
+                    <p class="cardInfo" id="temperature"></p>
+                    <p class="cardInfo" id="feelsLike"></p>
+                    <p class="cardInfo" id="humidity"></p>
+                    <p class="cardInfo" id="windSpeed"></p>
+                    <p class="cardInfo" id="uvIndex"></p>
                 </div>
-                <!-- Weather Information Column -->
-                <div class="col-9">
-                    <div class="card" style="width: 100%;" id="weatherInfoContainer"></div>
-                    <div id="forecastContainer">
-                        <h5 class="cardTitle" id="city-info"></h5>
-                        <p class="card-text" id="temp"></p>
-                        <p class="card-text" id="humidity"></p>
-                        <p class="card-text" id="wind"></p>
-                        <p class="card-text" id="uvIndex"></p>
+                <hr>
+                <div class="container" style = "margin: 40px;">
+                        <h3>5-day Forecast:</h3>
+                        <div class="row" id="dataRow" style="margin-left:auto;"></div>
                     </div>
-                </div>
-                <h3>5-day Forecast:</h3>
-                <div class="row" id="card-row" style="margin-left:auto;"></div>
+            </div>
         </div>
     </div>
     <footer class="footer mt-auto py-3 text-center">
@@ -57,6 +66,7 @@
     
     <script src="https://kit.fontawesome.com/40b7f7a292.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
