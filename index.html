@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Varela+Round&display=swap" rel="stylesheet">
+    <title>Weather Dashboard</title>
 </head>
 <body>
     
@@ -37,9 +37,17 @@
                 </div>
                 <!-- Weather Information Column -->
                 <div class="col-9">
-                    <div class="card" style="width: 100%;" id="weatherContainer"></div>
-                      <div id="forecastContainer"></div>
+                    <div class="card" style="width: 100%;" id="weatherInfoContainer"></div>
+                    <div id="forecastContainer">
+                        <h5 class="cardTitle" id="city-info"></h5>
+                        <p class="card-text" id="temp"></p>
+                        <p class="card-text" id="humidity"></p>
+                        <p class="card-text" id="wind"></p>
+                        <p class="card-text" id="uvIndex"></p>
+                    </div>
                 </div>
+                <h3>5-day Forecast:</h3>
+                <div class="row" id="card-row" style="margin-left:auto;"></div>
         </div>
     </div>
     <footer class="footer mt-auto py-3 text-center">
