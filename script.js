@@ -55,7 +55,7 @@ function getForecast(city){
         $("#uvIndex").attr("style", "background-color: Green; color: White; width: 35px;");//Favorable
       } else if (data.value <= 6) {
         $("#uvIndex").attr("style", "background-color: Yellow; color: Black; width: 35px;");//Moderate
-      }  else if (data.value <= 10) {
+      }  else if (data.value >= 7) {
         $("#uvIndex").attr("style", "background-color: Red; color: White; width: 35px;");//Severe
       } 
     })
