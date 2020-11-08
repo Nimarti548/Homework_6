@@ -1,21 +1,19 @@
-const searchBtn = $("#citySearchBtn");
 const cityInput = $("#cityInput");
+const searchBtn = $("#citySearchBtn");
 
 $("form").on("submit", function(e){
   e.preventDefault()
     //create a list item to append
     let input= cityInput.val();
-    let item = $("<li>")
-    item.attr("style", "border: solid; border-width: thin;")
-
-    item.text(input)
-    $("#citySrchHistory").prepend(item)
-    //function to return old info
-    $("#citySrchHistory").on("click", getCurrentWeather(input))
-
+    let srchItem = $("<li>")
+    srchItem.attr("style", "border: solid; border-width: thin;")
+    srchItem.text(input)
+    $("#citySrchHistory").prepend(srchItem)
+    
     getCurrentWeather(input);
     
-})
+  })
+
 
 function getCurrentWeather(city){
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=b96b52626f78508367acbb00dd591cd2`)
@@ -53,16 +51,13 @@ function getForecast(city){
     .then(response => response.json())
     .then(data => {
       $("#uvIndex").text(data.value);
-      if (data.value <= 2){
-        $("#uvIndex").attr("style", "background-color: Green; color: Black; width: 35px;");
-      } else if (data.value <= 5) {
-        $("#uvIndex").attr("style", "background-color: Yellow; color: Black; width: 35px;");
-      } else if (data.value <= 7) {
-        $("#uvIndex").attr("style", "background-color: Orange; color: Black; width: 35px;");
-      } else if (data.value <= 10) {
-        $("#uvIndex").attr("style", "background-color: Red; color: White; width: 35px;");
-      } else if (data.value > 10)
-      $("#uvIndex").attr("style", "background-color: Purple; color: White; width: 35px;");
+      if (data.value <= 4){
+        $("#uvIndex").attr("style", "background-color: Green; color: White; width: 35px;");//Favorable
+      } else if (data.value <= 6) {
+        $("#uvIndex").attr("style", "background-color: Yellow; color: Black; width: 35px;");//Moderate
+      }  else if (data.value <= 10) {
+        $("#uvIndex").attr("style", "background-color: Red; color: White; width: 35px;");//Severe
+      } 
     })
   }
 
@@ -97,4 +92,3 @@ function getForecast(city){
   
 
 
-// $("#temp").text(data.list[0].main.temp)
